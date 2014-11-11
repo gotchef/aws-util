@@ -1,28 +1,26 @@
-module GotChef
-	module Aws
-		module Layer
-		def layer_ips (layer)
-			hosts = []
-			return hosts if layer.nil? or layer.empty?
-			
-			instances = node[:opsworks][:layers][layer][:instances]
-			instances.each do |name, instance| 
-				hosts.push("#{instance[:private_ip]}")
-			end
-			return hosts
+module AwsUtil
+	module Layer
+	def layer_ips (layer)
+		hosts = []
+		return hosts if layer.nil? or layer.empty?
+		
+		instances = node[:opsworks][:layers][layer][:instances]
+		instances.each do |name, instance| 
+			hosts.push("#{instance[:private_ip]}")
 		end
-		def layers_ips (layers = [])
-			hash = {}
-			return hash if layers.nil? or layers.empty? 
-	
-			layers.each { |layer|
-				hash[layer] = layer_ips layer
-			}
-		end 
-		end
+		return hosts
+	end
+	def layers_ips (layers = [])
+		hash = {}
+		return hash if layers.nil? or layers.empty? 
+
+		layers.each { |layer|
+			hash[layer] = layer_ips layer
+		}
+	end 
 	end
 end
 
 class Chef::Recipe
-  include GotChef::Aws::Layer
+  include AwsUtil::Layer
 end
