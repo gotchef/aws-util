@@ -1,6 +1,6 @@
 module GotChef
 	module Aws
-		module Util
+		module Layer
 		def layer_ips (layer)
 			hosts = []
 			return hosts if layer.nil? or layer.empty?
@@ -24,5 +24,5 @@ module GotChef
 end
 
 class Chef::Recipe
-  include GotChef::Aws::Util
+  include GotChef::Aws::Layer
 end
