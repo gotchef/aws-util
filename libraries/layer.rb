@@ -17,6 +17,7 @@ module AwsUtil
 		layers.each { |layer|
 			hash[layer] = layer_ips layer
 		}
+		return hash
 	end 
 	end
 end
