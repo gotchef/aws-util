@@ -1,0 +1,2 @@
+
+default[:dnsupdate][:domain] = '.prod'

@@ -7,5 +7,5 @@ long_description 'Various recipes for interacting with AWS'
 version          '0.1.0'
 
 depends 'aws'
+depends "route53"
 
-provides 'aws-util::aws-tag'
