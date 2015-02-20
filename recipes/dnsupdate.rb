@@ -5,7 +5,7 @@ include_recipe 'route53'
 
 route53_record "create A record" do
   name  node[:opsworks][:instance][:hostname] + node[:dnsupdate][:domain]
-  value Net::HTTP.get(URI.parse('http://169.254.169.254/latest/meta-data/public-ipv4'))
+  value node[:opsworks][:instance][:private_ip] 
   type  "A"
   ttl   60
   #zone_id               node[:dns_zone_id]

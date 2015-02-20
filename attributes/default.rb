@@ -1,2 +1,2 @@
 
-default[:dnsupdate][:domain] = '.prod'
+default[:dnsupdate][:domain] = '.prod.'
